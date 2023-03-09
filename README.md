@@ -1,4 +1,4 @@
-# Nando's Supply Chain
+# Multiverse Deployment Module Project
 
 <img src="./assets/logo.png" style="width:230px" />
 <img src="./assets/multiverse-logo.png" style="width:230px" />
@@ -9,13 +9,18 @@ Deliver solutions to facilitate robust and accurate flow of product and informat
 ## 🏄 Vision
 A world in which Nando’s is unconstrained in choosing the best suppliers to support its growth, dynamic menu and Net Zero commitments and, without stress, our restaurants always have the ideal stock levels and Central Support has a total understanding of the state of the business
 
-## 🧭 Team Strategy
+## 🏋🏽 Personal Goal
+To demosntrate actitud, aptitud, capabilities and skills aquiered during the apprenticeship
 
-- [Miro Board](https://miro.com/app/board/uXjVP6TOgsA=/)
-- [Confluence](https://nandosuk.atlassian.net/wiki/spaces/SCM/overview?homepageId=3955720310)
+## 🧭 How to use
+npm install to install all dependencies
+npm run start
+or
+npm run server (For development)
 
-## 🛠️ Our Tools
-- [Slack Next Gen Platform](https://api.slack.com/future)
-- Typescript / Rust / Go / JS ...?
+
+
+## 🛠️ My Tools
+- MongoDB / Express / JS 
 - Terraform
 - Google Cloud Platform
