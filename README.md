@@ -1,6 +1,7 @@
 # Nando's Supply Chain
 
 <img src="./assets/logo.png" style="width:230px" />
+<img src="./assets/multiverse-logo.png" style="width:230px" />
 
 ## 🚀 Mission
 Deliver solutions to facilitate robust and accurate flow of product and information to and from suppliers to restaurants and platforms - to minimise costs, effort and to ensure our customers safety while providing all the meals they love
