@@ -12,7 +12,8 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-app.use('/api/reports', require('./routes/reportRoutes'))
+app.use('/api/reports', require('./routes/chickenRoutes'))
+app.use('/api/reports', require('./routes/drinksRoutes'))
 
 app.use(errorHandler)
 

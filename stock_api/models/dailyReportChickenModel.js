@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const reportSchema = mongoose.Schema({
+const DailyReportChickenSchema = mongoose.Schema({
     chickens: {
         type: Number,
         required: [true, "Please add the number of whole chickens currently in stock"]
@@ -19,11 +19,11 @@ const reportSchema = mongoose.Schema({
     },
     chicken_thighs: {
         type: Number,
-        required: [true, "Please add the number of whole chickens currently in stock"]
+        required: [true, "Please add the number of chicken thighs currently in stock"]
     },
 },
 {
     timestamps: true
 });
 
-module.exports = mongoose.model('Report', reportSchema)
+module.exports = mongoose.model("ChickenProducts", DailyReportChickenSchema);
