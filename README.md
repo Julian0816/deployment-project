@@ -1,4 +1,4 @@
-# Multiverse Deployment Module Project
+# Project for: Multiverse Deployment Module
 
 <img src="./assets/logo.png" style="width:230px" />
 <img src="./assets/multiverse-logo.png" style="width:230px" />
