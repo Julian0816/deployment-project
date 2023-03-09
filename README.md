@@ -13,10 +13,10 @@ A world in which Nando’s is unconstrained in choosing the best suppliers to su
 To demosntrate actitud, aptitud, capabilities and skills aquiered during the apprenticeship
 
 ## 🧭 How to use
--npm install to install all dependencies
--npm run start
-or
--npm run server (For development)
+- npm install to install all dependencies
+- npm run start
+- or
+- npm run server (For development)
 
 
 
