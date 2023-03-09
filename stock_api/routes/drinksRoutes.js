@@ -1,15 +1,15 @@
 const express = require("express");
 const router = express.Router();
 const {
-  getDailyKeyItemsReports,
-  createDailyKeyItemsReport,
-  updateDailyKeyItemsReport,
-  deleteDailyKeyItemsReport,
+  getDailyDrinksReports,
+  createDailyDrinksReport,
+  updateDailyDrinksReport,
+  deleteDailyDrinksReport,
 } = require("../handlers/dailyReportDrinksHandler");
 
 
 
-router.route("/drinks").get(getDailyKeyItemsReports).post(createDailyKeyItemsReport);
-router.route("/drinks/:id").put(updateDailyKeyItemsReport).delete(deleteDailyKeyItemsReport);
+router.route("/drinks").get(getDailyDrinksReports).post(createDailyDrinksReport);
+router.route("/drinks/:id").put(updateDailyDrinksReport).delete(deleteDailyDrinksReport);
 
 module.exports = router;

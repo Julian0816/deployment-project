@@ -1,45 +1,41 @@
-
 const asyncHandler = require("express-async-handler");
-const Report = require("../models/dailyReportDrinksModel");
+const Report = require("../models/dailyReportKeyItemsModel");
 
 // @desc    Get keyItemsReports
 // @route   Get /api/reports/keyItems
 // @access  Private
-const getDailyDrinksReports = asyncHandler(async (req, res) => {
+const getDailyKeyItemsReports = asyncHandler(async (req, res) => {
   const reports = await Report.find();
 
   res.status(200).json(reports);
 });
 
-
 // @desc    Create keyItemsReport
 // @route   Post /api/report/keyItems
 // @access  Private
-const createDailyDrinksReport = asyncHandler(async (req, res) => {
+const createDailyKeyItemsReport = asyncHandler(async (req, res) => {
   if (!req.body) {
     res.status(400);
     throw new Error("Please add a text field");
   }
 
   const report = await Report.create({
-    cara_viva_rose: req.body.cara_viva_rose,
-    cara_viva_summer_fruit: req.body.cara_viva_summer_fruit,
-    freedom_pils: req.body.freedom_pils,
-    sagres: req.body.sagres,
-    spier_merlot_250ml: req.body.spier_merlot_250ml,
-    spier_rose_250ml: req.body.spier_rose_250ml,
-    spier_sauv_250ml: req.body.spier_sauv_250ml,
-    spier_sig_chard_250ml: req.body.spier_sig_chard_250ml,
+    sweet_potato_wedges: req.body.sweet_potato_wedges,
+    long_stem_broccoli_in_kg: req.body.long_stem_broccoli_in_kg,
+    coleslaw_in_kg: req.body.coleslaw_in_kg,
+    corn_per_unit: req.body.corn_per_unit,
+    rice_in_kg: req.body.rice_in_kg,
+    mixed_olives_in_kg: req.body.mixed_olives_in_kg,
+    chips_in_kg: req.body.chips_in_kg,
   });
 
   res.status(200).json({ message: "Stock Posted" });
 });
 
-
 // @desc    GUpdate keyItemsReport
 // @route   Put /api/report/keyItems/:id
 // @access  Private
-const updateDailyDrinksReport = asyncHandler(async (req, res) => {
+const updateDailyKeyItemsReport = asyncHandler(async (req, res) => {
   const report = await Report.findById(req.params.id);
 
   if (!report) {
@@ -56,11 +52,10 @@ const updateDailyDrinksReport = asyncHandler(async (req, res) => {
   res.status(200).json(updatedReport);
 });
 
-
 // @desc    Delete keyItemsReport
 // @route   Delete /api/report/keyItems/:id
 // @access  Private
-const deleteDailyDrinksReport = asyncHandler(async (req, res) => {
+const deleteDailyKeyItemsReport = asyncHandler(async (req, res) => {
   const report = await Report.findById(req.params.id);
 
   if (!report) {
@@ -73,8 +68,8 @@ const deleteDailyDrinksReport = asyncHandler(async (req, res) => {
 });
 
 module.exports = {
-  getDailyDrinksReports,
-  createDailyDrinksReport,
-  updateDailyDrinksReport,
-  deleteDailyDrinksReport,
+  getDailyKeyItemsReports,
+  createDailyKeyItemsReport,
+  updateDailyKeyItemsReport,
+  deleteDailyKeyItemsReport,
 };
