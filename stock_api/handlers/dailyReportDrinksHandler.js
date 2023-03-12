@@ -1,13 +1,13 @@
-
-const asyncHandler = require("express-async-handler");
-const Report = require("../models/dailyReportDrinksModel");
+const asyncHandler = require('express-async-handler');
+const Report = require('../models/dailyReportDrinksModel');
+const Restaurant = require("../models/restaurantModel");
 
 // @desc    Get keyItemsReports
 // @route   Get /api/reports/keyItems
 // @access  Private
 const getDailyDrinksReports = asyncHandler(async (req, res) => {
-  const reports = await Report.find();
-
+  const reports = await Report.find({ restaurant: req.restaurant.id });
+  
   res.status(200).json(reports);
 });
 
@@ -30,6 +30,7 @@ const createDailyDrinksReport = asyncHandler(async (req, res) => {
     spier_rose_250ml: req.body.spier_rose_250ml,
     spier_sauv_250ml: req.body.spier_sauv_250ml,
     spier_sig_chard_250ml: req.body.spier_sig_chard_250ml,
+    restaurant: req.restaurant.id,
   });
 
   res.status(200).json({ message: "Stock Posted" });
@@ -45,6 +46,20 @@ const updateDailyDrinksReport = asyncHandler(async (req, res) => {
   if (!report) {
     res.status(400);
     throw new Error("Report not found");
+  }
+
+  const restaurant = await Restaurant.findById(req.restaurant.id);
+
+  //Check for restaurant
+  if (!restaurant) {
+    res.status(401);
+    throw new Error("User not found");
+  }
+
+  // Make sure the logged in restaurant matches the report restaurant
+  if (report.restaurant.toString() !== restaurant.id) {
+    res.status(401);
+    throw new Error("Restaurant not authorised");
   }
 
   const updatedReport = await Report.findByIdAndUpdate(
@@ -66,6 +81,20 @@ const deleteDailyDrinksReport = asyncHandler(async (req, res) => {
   if (!report) {
     res.status(400);
     throw new Error("Report not found");
+  }
+
+  const restaurant = await Restaurant.findById(req.restaurant.id);
+
+  //Check for restaurant
+  if (!restaurant) {
+    res.status(401);
+    throw new Error("Restaurant not found");
+  }
+
+  // Make sure the logged in restaurant matches the report restaurant
+  if (report.restaurant.toString() !== restaurant.id) {
+    res.status(401);
+    throw new Error("Restaurant not authorised");
   }
 
   await Report.findById(req.params.id).findOneAndRemove();

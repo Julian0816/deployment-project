@@ -1,11 +1,12 @@
-const asyncHandler = require('express-async-handler')
-const Report = require('../models/dailyReportChickenModel')
+const asyncHandler = require('express-async-handler');
+const Report = require('../models/dailyReportChickenModel');
+const Restaurant = require('../models/restaurantModel');
 
 // @desc    Get chickenReports
 // @route   Get /api/reports/chicken
 // @access  Private
 const getDailyChickenReports = asyncHandler(async (req, res) => {
-  const reports = await Report.find();
+  const reports = await Report.find({ restaurant: req.restaurant.id });
 
   res.status(200).json(reports);
 });
@@ -17,7 +18,7 @@ const getDailyChickenReports = asyncHandler(async (req, res) => {
 const createDailyChickenReport = asyncHandler(async (req, res) => {
   if (!req.body) {
     res.status(400);
-    throw new Error("Please add a text field");
+    throw new Error("Please add a all the fields");
   }
 
   const report = await Report.create({
@@ -26,6 +27,7 @@ const createDailyChickenReport = asyncHandler(async (req, res) => {
     wings: req.body.wings,
     double_brest: req.body.double_brest,
     chicken_thighs: req.body.chicken_thighs,
+    restaurant: req.restaurant.id,
   });
 
   res.status(200).json({ message: "Stock Posted" });
@@ -41,6 +43,20 @@ const updateDailyChickenReport = asyncHandler(async (req, res) => {
   if (!report) {
     res.status(400);
     throw new Error("Report not found");
+  }
+
+  const restaurant = await Restaurant.findById(req.restaurant.id);
+
+  //Check for restaurant
+  if (!restaurant) {
+    res.status(401);
+    throw new Error("Restaurant not found");
+  }
+
+  // Make sure the logged in restaurant matches the report restaurant
+  if (report.restaurant.toString() !== restaurant.id) {
+    res.status(401);
+    throw new Error("User not authorised");
   }
 
   const updatedReport = await Report.findByIdAndUpdate(
@@ -62,6 +78,20 @@ const deleteDailyChickenReport = asyncHandler(async (req, res) => {
   if (!report) {
     res.status(400);
     throw new Error("Report not found");
+  }
+
+  const restaurant = await Restaurant.findById(req.restaurant.id);
+
+  //Check for restaurant
+  if (!restaurant) {
+    res.status(401);
+    throw new Error("Restaurant not found");
+  }
+
+  // Make sure the logged in restaurant matches the report restaurant
+  if (report.restaurant.toString() !== restaurant.id) {
+    res.status(401);
+    throw new Error("Restaurant not authorised");
   }
 
   await Report.findById(req.params.id).findOneAndRemove();

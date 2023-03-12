@@ -1,11 +1,12 @@
 const asyncHandler = require("express-async-handler");
 const Report = require("../models/dailyReportKeyItemsModel");
+const Restaurant = require("../models/restaurantModel");
 
 // @desc    Get keyItemsReports
 // @route   Get /api/reports/keyItems
 // @access  Private
 const getDailyKeyItemsReports = asyncHandler(async (req, res) => {
-  const reports = await Report.find();
+  const reports = await Report.find({ restaurant: req.restaurant.id });
 
   res.status(200).json(reports);
 });
@@ -27,6 +28,7 @@ const createDailyKeyItemsReport = asyncHandler(async (req, res) => {
     rice_in_kg: req.body.rice_in_kg,
     mixed_olives_in_kg: req.body.mixed_olives_in_kg,
     chips_in_kg: req.body.chips_in_kg,
+    restaurant: req.restaurant.id,
   });
 
   res.status(200).json({ message: "Stock Posted" });
@@ -41,6 +43,20 @@ const updateDailyKeyItemsReport = asyncHandler(async (req, res) => {
   if (!report) {
     res.status(400);
     throw new Error("Report not found");
+  }
+
+  const restaurant = await Restaurant.findById(req.restaurant.id);
+
+  //Check for restaurant
+  if (!restaurant) {
+    res.status(401);
+    throw new Error("Restaurant not found");
+  }
+
+  // Make sure the logged in restaurant matches the report restaurant
+  if (report.restaurant.toString() !== restaurant.id) {
+    res.status(401);
+    throw new Error("Restaurant not authorised");
   }
 
   const updatedReport = await Report.findByIdAndUpdate(
@@ -61,6 +77,20 @@ const deleteDailyKeyItemsReport = asyncHandler(async (req, res) => {
   if (!report) {
     res.status(400);
     throw new Error("Report not found");
+  }
+
+  const restaurant = await Restaurant.findById(req.restaurant.id);
+
+  //Check for restaurant
+  if (!restaurant) {
+    res.status(401);
+    throw new Error("Restaurant not found");
+  }
+
+  // Make sure the logged in restaurant matches the report restaurant
+  if (report.restaurant.toString() !== restaurant.id) {
+    res.status(401);
+    throw new Error("Restaurant not authorised");
   }
 
   await Report.findById(req.params.id).findOneAndRemove();

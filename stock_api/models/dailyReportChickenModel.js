@@ -1,6 +1,11 @@
 const mongoose = require('mongoose')
 
 const DailyReportChickenSchema = mongoose.Schema({
+    restaurant: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'Restaurant'
+    },
     chickens: {
         type: Number,
         required: [true, "Please add the number of whole chickens currently in stock"]

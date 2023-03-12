@@ -2,6 +2,11 @@ const mongoose = require("mongoose");
 
 const DailyDrinksSchema = mongoose.Schema(
   {
+    restaurant: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: "Restaurant",
+    },
     cara_viva_rose: {
       type: Number,
       required: [

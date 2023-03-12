@@ -6,10 +6,10 @@ const {
   updateDailyDrinksReport,
   deleteDailyDrinksReport,
 } = require("../handlers/dailyReportDrinksHandler");
+const { protect } = require("../middleware/authMiddleware");
 
 
-
-router.route("/drinks").get(getDailyDrinksReports).post(createDailyDrinksReport);
-router.route("/drinks/:id").put(updateDailyDrinksReport).delete(deleteDailyDrinksReport);
+router.route("/drinks").get(protect, getDailyDrinksReports).post(protect, createDailyDrinksReport);
+router.route("/drinks/:id").put(protect, updateDailyDrinksReport).delete(protect, deleteDailyDrinksReport);
 
 module.exports = router;

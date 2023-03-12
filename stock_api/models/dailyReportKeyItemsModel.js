@@ -2,6 +2,11 @@ const mongoose = require("mongoose");
 
 const DailyKeyItemsSchema = mongoose.Schema(
   {
+    restaurant: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: "Restaurant",
+    },
     sweet_potato_wedges: {
       type: Number,
       required: [
@@ -37,10 +42,7 @@ const DailyKeyItemsSchema = mongoose.Schema(
     },
     chips_in_kg: {
       type: Number,
-      required: [
-        true,
-        "Please add the number of Chips currently in stock",
-      ],
+      required: [true, "Please add the number of Chips currently in stock"],
     },
   },
   {

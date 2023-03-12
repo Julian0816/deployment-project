@@ -1,14 +1,15 @@
-const express = require('express')
-const router = express.Router()
+const express = require('express');
+const router = express.Router();
 const {
   getDailyChickenReports,
   createDailyChickenReport,
   updateDailyChickenReport,
   deleteDailyChickenReport,
 } = require("../handlers/DailyReportChickenHandler");
+const { protect } = require('../middleware/authMiddleware')
 
 
-router.route("/chicken").get(getDailyChickenReports).post(createDailyChickenReport);
-router.route("/chicken/:id").put(updateDailyChickenReport).delete(deleteDailyChickenReport);
+router.route("/chicken").get(protect, getDailyChickenReports).post(protect, createDailyChickenReport);
+router.route("/chicken/:id").put(protect, updateDailyChickenReport).delete(protect, deleteDailyChickenReport);
 
 module.exports = router

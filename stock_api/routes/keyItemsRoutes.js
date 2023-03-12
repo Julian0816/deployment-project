@@ -6,10 +6,9 @@ const {
   updateDailyKeyItemsReport,
   deleteDailyKeyItemsReport,
 } = require("../handlers/dailyReportKeyItemsHandler");
+const { protect } = require("../middleware/authMiddleware");
 
-
-
-router.route("/keyItems").get(getDailyKeyItemsReports).post(createDailyKeyItemsReport);
-router.route("/keyItems/:id").put(updateDailyKeyItemsReport).delete(deleteDailyKeyItemsReport);
+router.route("/keyItems").get(protect, getDailyKeyItemsReports).post(protect, createDailyKeyItemsReport);
+router.route("/keyItems/:id").put(protect, updateDailyKeyItemsReport).delete(protect, deleteDailyKeyItemsReport);
 
 module.exports = router;
