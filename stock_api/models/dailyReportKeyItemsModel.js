@@ -2,10 +2,10 @@ const mongoose = require("mongoose");
 
 const DailyKeyItemsSchema = mongoose.Schema(
   {
-    user: {
+    restaurant: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
-      ref: "User",
+      ref: "Restaurant",
     },
     sweet_potato_wedges: {
       type: Number,

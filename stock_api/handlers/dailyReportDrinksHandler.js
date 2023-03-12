@@ -1,12 +1,12 @@
 const asyncHandler = require('express-async-handler');
 const Report = require('../models/dailyReportDrinksModel');
-const User = require("../models/userModel");
+const Restaurant = require("../models/restaurantModel");
 
 // @desc    Get keyItemsReports
 // @route   Get /api/reports/keyItems
 // @access  Private
 const getDailyDrinksReports = asyncHandler(async (req, res) => {
-  const reports = await Report.find({ user: req.user.id });
+  const reports = await Report.find({ restaurant: req.restaurant.id });
   
   res.status(200).json(reports);
 });
@@ -22,7 +22,6 @@ const createDailyDrinksReport = asyncHandler(async (req, res) => {
   }
 
   const report = await Report.create({
-    user: req.user.id,
     cara_viva_rose: req.body.cara_viva_rose,
     cara_viva_summer_fruit: req.body.cara_viva_summer_fruit,
     freedom_pils: req.body.freedom_pils,
@@ -31,6 +30,7 @@ const createDailyDrinksReport = asyncHandler(async (req, res) => {
     spier_rose_250ml: req.body.spier_rose_250ml,
     spier_sauv_250ml: req.body.spier_sauv_250ml,
     spier_sig_chard_250ml: req.body.spier_sig_chard_250ml,
+    restaurant: req.restaurant.id,
   });
 
   res.status(200).json({ message: "Stock Posted" });
@@ -48,18 +48,18 @@ const updateDailyDrinksReport = asyncHandler(async (req, res) => {
     throw new Error("Report not found");
   }
 
-  const user = await User.findById(req.user.id);
+  const restaurant = await Restaurant.findById(req.restaurant.id);
 
-  //Check for user
-  if (!user) {
+  //Check for restaurant
+  if (!restaurant) {
     res.status(401);
     throw new Error("User not found");
   }
 
-  // Make sure the logged in user matches the report user
-  if (report.user.toString() !== user.id) {
+  // Make sure the logged in restaurant matches the report restaurant
+  if (report.restaurant.toString() !== restaurant.id) {
     res.status(401);
-    throw new Error("User not authorised");
+    throw new Error("Restaurant not authorised");
   }
 
   const updatedReport = await Report.findByIdAndUpdate(
@@ -83,18 +83,18 @@ const deleteDailyDrinksReport = asyncHandler(async (req, res) => {
     throw new Error("Report not found");
   }
 
-  const user = await User.findById(req.user.id);
+  const restaurant = await Restaurant.findById(req.restaurant.id);
 
-  //Check for user
-  if (!user) {
+  //Check for restaurant
+  if (!restaurant) {
     res.status(401);
-    throw new Error("User not found");
+    throw new Error("Restaurant not found");
   }
 
-  // Make sure the logged in user matches the report user
-  if (report.user.toString() !== user.id) {
+  // Make sure the logged in restaurant matches the report restaurant
+  if (report.restaurant.toString() !== restaurant.id) {
     res.status(401);
-    throw new Error("User not authorised");
+    throw new Error("Restaurant not authorised");
   }
 
   await Report.findById(req.params.id).findOneAndRemove();

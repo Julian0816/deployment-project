@@ -1,12 +1,12 @@
 const asyncHandler = require('express-async-handler');
 const Report = require('../models/dailyReportChickenModel');
-const User = require('../models/userModel');
+const Restaurant = require('../models/restaurantModel');
 
 // @desc    Get chickenReports
 // @route   Get /api/reports/chicken
 // @access  Private
 const getDailyChickenReports = asyncHandler(async (req, res) => {
-  const reports = await Report.find({ user: req.user.id });
+  const reports = await Report.find({ restaurant: req.restaurant.id });
 
   res.status(200).json(reports);
 });
@@ -18,7 +18,7 @@ const getDailyChickenReports = asyncHandler(async (req, res) => {
 const createDailyChickenReport = asyncHandler(async (req, res) => {
   if (!req.body) {
     res.status(400);
-    throw new Error("Please add a text field");
+    throw new Error("Please add a all the fields");
   }
 
   const report = await Report.create({
@@ -27,7 +27,7 @@ const createDailyChickenReport = asyncHandler(async (req, res) => {
     wings: req.body.wings,
     double_brest: req.body.double_brest,
     chicken_thighs: req.body.chicken_thighs,
-    user: req.user.id,
+    restaurant: req.restaurant.id,
   });
 
   res.status(200).json({ message: "Stock Posted" });
@@ -45,18 +45,18 @@ const updateDailyChickenReport = asyncHandler(async (req, res) => {
     throw new Error("Report not found");
   }
 
-  const user = await User.findById(req.user.id)
+  const restaurant = await Restaurant.findById(req.restaurant.id);
 
-  //Check for user
-  if(!user) {
-    res.status(401)
-    throw new Error('User not found')
+  //Check for restaurant
+  if (!restaurant) {
+    res.status(401);
+    throw new Error("Restaurant not found");
   }
 
-  // Make sure the logged in user matches the report user
-  if(report.user.toString() !== user.id) {
-    res.status(401)
-    throw new Error('User not authorised')
+  // Make sure the logged in restaurant matches the report restaurant
+  if (report.restaurant.toString() !== restaurant.id) {
+    res.status(401);
+    throw new Error("User not authorised");
   }
 
   const updatedReport = await Report.findByIdAndUpdate(
@@ -80,18 +80,18 @@ const deleteDailyChickenReport = asyncHandler(async (req, res) => {
     throw new Error("Report not found");
   }
 
-  const user = await User.findById(req.user.id);
+  const restaurant = await Restaurant.findById(req.restaurant.id);
 
-  //Check for user
-  if (!user) {
+  //Check for restaurant
+  if (!restaurant) {
     res.status(401);
-    throw new Error("User not found");
+    throw new Error("Restaurant not found");
   }
 
-  // Make sure the logged in user matches the report user
-  if (report.user.toString() !== user.id) {
+  // Make sure the logged in restaurant matches the report restaurant
+  if (report.restaurant.toString() !== restaurant.id) {
     res.status(401);
-    throw new Error("User not authorised");
+    throw new Error("Restaurant not authorised");
   }
 
   await Report.findById(req.params.id).findOneAndRemove();

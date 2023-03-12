@@ -2,10 +2,10 @@ const mongoose = require("mongoose");
 
 const DailyDrinksSchema = mongoose.Schema(
   {
-    user: {
+    restaurant: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
-      ref: "User",
+      ref: "Restaurant",
     },
     cara_viva_rose: {
       type: Number,

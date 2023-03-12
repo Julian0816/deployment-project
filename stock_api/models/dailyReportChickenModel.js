@@ -1,10 +1,10 @@
 const mongoose = require('mongoose')
 
 const DailyReportChickenSchema = mongoose.Schema({
-    user: {
+    restaurant: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
-        ref: 'User'
+        ref: 'Restaurant'
     },
     chickens: {
         type: Number,
