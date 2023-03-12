@@ -1,11 +1,12 @@
 const asyncHandler = require("express-async-handler");
 const Report = require("../models/dailyReportKeyItemsModel");
+const User = require("../models/userModel");
 
 // @desc    Get keyItemsReports
 // @route   Get /api/reports/keyItems
 // @access  Private
 const getDailyKeyItemsReports = asyncHandler(async (req, res) => {
-  const reports = await Report.find();
+  const reports = await Report.find({ user: req.user.id });
 
   res.status(200).json(reports);
 });
@@ -27,6 +28,7 @@ const createDailyKeyItemsReport = asyncHandler(async (req, res) => {
     rice_in_kg: req.body.rice_in_kg,
     mixed_olives_in_kg: req.body.mixed_olives_in_kg,
     chips_in_kg: req.body.chips_in_kg,
+    user: req.user.id,
   });
 
   res.status(200).json({ message: "Stock Posted" });
@@ -41,6 +43,20 @@ const updateDailyKeyItemsReport = asyncHandler(async (req, res) => {
   if (!report) {
     res.status(400);
     throw new Error("Report not found");
+  }
+
+  const user = await User.findById(req.user.id)
+
+  //Check for user
+  if(!user) {
+    res.status(401)
+    throw new Error('User not found')
+  }
+
+  // Make sure the logged in user matches the report user
+  if(report.user.toString() !== user.id) {
+    res.status(401)
+    throw new Error('User not authorised')
   }
 
   const updatedReport = await Report.findByIdAndUpdate(
@@ -61,6 +77,20 @@ const deleteDailyKeyItemsReport = asyncHandler(async (req, res) => {
   if (!report) {
     res.status(400);
     throw new Error("Report not found");
+  }
+
+    const user = await User.findById(req.user.id)
+
+  //Check for user
+  if(!user) {
+    res.status(401)
+    throw new Error('User not found')
+  }
+
+  // Make sure the logged in user matches the report user
+  if(report.user.toString() !== user.id) {
+    res.status(401)
+    throw new Error('User not authorised')
   }
 
   await Report.findById(req.params.id).findOneAndRemove();
