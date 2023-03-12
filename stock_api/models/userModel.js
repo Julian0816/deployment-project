@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
 
+//TODO Change user model to restaurant model and update the whole project
+
 const userSchema = mongoose.Schema({
     name: {
         type: String,
@@ -19,4 +21,4 @@ const userSchema = mongoose.Schema({
     timestamps: true
 })
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model('User', userSchema);

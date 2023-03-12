@@ -1,5 +1,5 @@
-const asyncHandler = require("express-async-handler");
-const Report = require("../models/dailyReportDrinksModel");
+const asyncHandler = require('express-async-handler');
+const Report = require('../models/dailyReportDrinksModel');
 const User = require("../models/userModel");
 
 // @desc    Get keyItemsReports
@@ -7,7 +7,7 @@ const User = require("../models/userModel");
 // @access  Private
 const getDailyDrinksReports = asyncHandler(async (req, res) => {
   const reports = await Report.find({ user: req.user.id });
-  console.log({ user: req.user.id });
+  
   res.status(200).json(reports);
 });
 
@@ -22,6 +22,7 @@ const createDailyDrinksReport = asyncHandler(async (req, res) => {
   }
 
   const report = await Report.create({
+    user: req.user.id,
     cara_viva_rose: req.body.cara_viva_rose,
     cara_viva_summer_fruit: req.body.cara_viva_summer_fruit,
     freedom_pils: req.body.freedom_pils,
@@ -30,7 +31,6 @@ const createDailyDrinksReport = asyncHandler(async (req, res) => {
     spier_rose_250ml: req.body.spier_rose_250ml,
     spier_sauv_250ml: req.body.spier_sauv_250ml,
     spier_sig_chard_250ml: req.body.spier_sig_chard_250ml,
-    user: req.user.id,
   });
 
   res.status(200).json({ message: "Stock Posted" });
