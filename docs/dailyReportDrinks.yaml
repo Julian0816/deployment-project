@@ -20,7 +20,7 @@ paths:
     post:                 
       tags:               
         - Drinks           
-      summary: Posts the drinks daily stock count from a specific Restaurant
+      summary: Posts/Creates the drinks daily stock count from a specific Restaurant
       requestBody:
         description: drinks
         content:

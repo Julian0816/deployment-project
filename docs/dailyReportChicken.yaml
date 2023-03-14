@@ -20,7 +20,7 @@ paths:
     post:                 
       tags:               
         - Chicken           
-      summary: Posts the chicken daily stock count from a specific Restaurant
+      summary: Posts/Creates the chicken daily stock count from a specific Restaurant
       requestBody:
         description: chicken
         content:
