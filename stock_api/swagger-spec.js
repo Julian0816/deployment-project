@@ -5,7 +5,8 @@ const swaggerDefinition = {
   info: {
     title: "Stock Count Api",
     version: "0.1.0",
-    description: "A Multiverse project with the aim to add value to Nando's Ltd.",
+    description:
+      "A Multiverse project with the aim to add value to Nando's Ltd.",
     contact: {
       name: "Julian Martinez",
     },
@@ -13,6 +14,19 @@ const swaggerDefinition = {
   servers: [
     {
       url: "http://localhost:8000",
+    },
+  ],
+  components: {
+    securitySchemes: {
+      bearerAuth: {
+        type: "http",
+        scheme: "bearer",
+      },
+    },
+  },
+  security: [
+    {
+      bearerAuth: [],
     },
   ],
 };

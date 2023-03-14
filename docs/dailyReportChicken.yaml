@@ -1,0 +1,178 @@
+paths:
+  /api/reports/chicken:
+    get:                 
+      tags:               
+        - Get Chicken Report            
+      summary: Gets the chicken daily stock count from a specific Restaurant
+      produces:
+      - application/json
+      parameters:         
+      - in: body          
+        name: sign up     
+        description: Gets Stock
+        required: false   
+        schema:           
+          $ref: '#/definitions/ChickenReport' 
+      responses:          
+        200:
+          description: An object with report details
+  /api/reports/{chicken}:
+    post:                 
+      tags:               
+        - Post Chicken Report            
+      summary: Posts the chicken daily stock count from a specific Restaurant
+      produces:
+      - application/json
+      parameters:         
+      - in: body          
+        name: sign up     
+        description: Post stock
+        required: false   
+        schema:           
+          $ref: '#/definitions/PostChickenReport' 
+      responses:          
+        201:
+          description: An object with report details
+  /api/reports/{chicken}/{restaurant_id}:
+    put:                 
+      tags:               
+        - Update Chicken Report            
+      summary: Updates the chicken daily stock count from a specific Restaurant
+      produces:
+      - application/json
+      parameters:         
+      - in: body          
+        name: sign up     
+        description: Update stock
+        required: false   
+        schema:           
+          $ref: '#/definitions/PutChickenReport' 
+      responses:          
+        201:
+          description: An object with report details
+  /api/reports/{chicken}/{restaurantId}:
+    delete:                 
+      tags:               
+        - Delete Chicken Report            
+      summary: Deletes the chicken daily stock count from a specific Restaurant
+      produces:
+      - application/json
+      parameters:         
+      - in: body          
+        name: sign up     
+        description: Delete stock
+        required: false   
+        schema:           
+          $ref: '#/definitions/deleteChickenReport' 
+      responses:          
+        201:
+          description: An object with report details
+definitions:        
+  ChickenReport:
+    type: object
+    properties:
+      ChickenReport:
+        type: object
+        properties:
+          _id:
+            type: string
+            example: 640e5d7478b88f6300ed168f
+          restaurant:
+            type: string
+            example: 640e59000b0d9114c77cceaa
+          chickens:
+            type: number
+            example: 81
+          chicken_fillets:
+            type: number
+            example: 12
+          wings:
+            type: number
+            example: 34
+          double_brest:
+            type: number
+            example: 7 
+          chicken_thighs:
+            type: number
+            example: 14
+          createdAt:
+            type: string
+            example: 2023-03-12T23:17:08.408Z
+          updatedAt:
+            type: string
+            example: 2023-03-12T23:17:08.408Z
+          __v:
+            type: number
+            example: 0
+  PostChickenReport:
+    type: object
+    properties:
+      ChickenReport:
+        type: object
+        properties:
+          _id:
+            type: string
+            example: 640e5d7478b88f6300ed168f
+          restaurant:
+            type: string
+            example: 640e59000b0d9114c77cceaa
+          chickens:
+            type: number
+            example: 81
+          chicken_fillets:
+            type: number
+            example: 12
+          wings:
+            type: number
+            example: 34
+          double_brest:
+            type: number
+            example: 7 
+          chicken_thighs:
+            type: number
+            example: 14
+          createdAt:
+            type: string
+            example: 2023-03-12T23:17:08.408Z
+          updatedAt:
+            type: string
+            example: 2023-03-12T23:17:08.408Z
+          __v:
+            type: number
+            example: 0
+  deleteChickenReport:
+    type: object
+    properties:
+      ChickenReport:
+        type: object
+        properties:
+          _id:
+            type: string
+            example: 640e5d7478b88f6300ed168f
+          restaurant:
+            type: string
+            example: 640e59000b0d9114c77cceaa
+          chickens:
+            type: number
+            example: 81
+          chicken_fillets:
+            type: number
+            example: 12
+          wings:
+            type: number
+            example: 34
+          double_brest:
+            type: number
+            example: 7 
+          chicken_thighs:
+            type: number
+            example: 14
+          createdAt:
+            type: string
+            example: 2023-03-12T23:17:08.408Z
+          updatedAt:
+            type: string
+            example: 2023-03-12T23:17:08.408Z
+          __v:
+            type: number
+            example: 0      

@@ -1,0 +1,107 @@
+paths:
+  /api/reports/restaurant:
+    post:                 
+      tags:               
+        - Register a restaurant            
+      summary: Registers a restaurant
+      produces:
+      - application/json
+      parameters:         
+      - in: body          
+        name: sign up     
+        description: Register Restaurant
+        required: false   
+        schema:           
+          $ref: '#/definitions/restaurantRegistration' 
+      responses:          
+        201:
+          description: An object with report details
+  /api/reports/{restaurant}:
+    post:                 
+      tags:               
+        - Authorise a restaurant        
+      summary: Authorise a restaurant
+      produces:
+      - application/json
+      parameters:         
+      - in: body          
+        name: sign up     
+        description: Authorise Restaurant
+        required: false   
+        schema:           
+          $ref: '#/definitions/restaurantAuthorisation' 
+      responses:          
+        201:
+          description: An object with report details
+  /api/reports/me:
+    get:                 
+      tags:               
+        - Get your own restaurant details        
+      summary: Restaurant details
+      produces:
+      - application/json
+      parameters:         
+      - in: body          
+        name: sign up     
+        description: Restaurant details
+        required: false   
+        schema:           
+          $ref: '#/definitions/restaurantDetails' 
+      responses:          
+        201:
+          description: An object with report details
+definitions:        
+  restaurantRegistration:
+    type: object
+    properties:
+      ChickenReport:
+        type: object
+        properties:
+          _id:
+            type: string
+            example: 640e5d7478b88f6300ed168f
+          name:
+            type: string
+            example: Elephant and Castle
+          email:
+            type: string
+            example: elephant&castle@gmail.com
+          token:
+            type: number
+            example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MGU1OTAwMGIwZDkxMTRjNzdjY2VhYSIsImlhdCI6MTY3ODY2MTg4OCwiZXhwIjoxNjc4NzA1MDg4fQ.viNMOAw1AGhDcSsffduDofRX7J6hfs45XD_CAVfdJvw
+  restaurantAuthorisation:
+    type: object
+    properties:
+      ChickenReport:
+        type: object
+        properties:
+          _id:
+            type: string
+            example: 640e5d7478b88f6300ed168f
+          name:
+            type: string
+            example: Elephant and Castle
+          email:
+            type: string
+            example: elephant&castle@gmail.com
+          token:
+            type: number
+            example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MGU1OTAwMGIwZDkxMTRjNzdjY2VhYSIsImlhdCI6MTY3ODY2MTg4OCwiZXhwIjoxNjc4NzA1MDg4fQ.viNMOAw1AGhDcSsffduDofRX7J6hfs45XD_CAVfdJvw
+  restaurantDetails:
+    type: object
+    properties:
+      ChickenReport:
+        type: object
+        properties:
+          _id:
+            type: string
+            example: 640e5d7478b88f6300ed168f
+          name:
+            type: string
+            example: Elephant and Castle
+          email:
+            type: string
+            example: elephant&castle@gmail.com
+          token:
+            type: number
+            example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MGU1OTAwMGIwZDkxMTRjNzdjY2VhYSIsImlhdCI6MTY3ODY2MTg4OCwiZXhwIjoxNjc4NzA1MDg4fQ.viNMOAw1AGhDcSsffduDofRX7J6hfs45XD_CAVfdJvw
