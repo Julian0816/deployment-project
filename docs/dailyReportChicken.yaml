@@ -2,7 +2,7 @@ paths:
   /api/reports/chicken:
     get:                 
       tags:               
-        - Get Chicken Report            
+        - Chicken          
       summary: Gets the chicken daily stock count from a specific Restaurant
       produces:
       - application/json
@@ -19,7 +19,7 @@ paths:
   /api/reports/{chicken}:
     post:                 
       tags:               
-        - Post Chicken Report            
+        - Chicken           
       summary: Posts the chicken daily stock count from a specific Restaurant
       produces:
       - application/json
@@ -36,7 +36,7 @@ paths:
   /api/reports/{chicken}/{restaurant_id}:
     put:                 
       tags:               
-        - Update Chicken Report            
+        - Chicken           
       summary: Updates the chicken daily stock count from a specific Restaurant
       produces:
       - application/json
@@ -53,7 +53,7 @@ paths:
   /api/reports/{chicken}/{restaurantId}:
     delete:                 
       tags:               
-        - Delete Chicken Report            
+        - Chicken           
       summary: Deletes the chicken daily stock count from a specific Restaurant
       produces:
       - application/json

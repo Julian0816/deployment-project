@@ -2,7 +2,7 @@ paths:
   /api/reports/restaurant:
     post:                 
       tags:               
-        - Register a restaurant            
+        - Restaurant            
       summary: Registers a restaurant
       produces:
       - application/json
@@ -19,7 +19,7 @@ paths:
   /api/reports/{restaurant}:
     post:                 
       tags:               
-        - Authorise a restaurant        
+        - Restaurant        
       summary: Authorise a restaurant
       produces:
       - application/json
@@ -36,7 +36,7 @@ paths:
   /api/reports/me:
     get:                 
       tags:               
-        - Get your own restaurant details        
+        - Restaurant        
       summary: Restaurant details
       produces:
       - application/json

@@ -2,7 +2,7 @@ paths:
   /api/reports/drinks:
     get:                 
       tags:               
-        - Get Drinks Report            
+        - Drinks           
       summary: Gets the Drinks daily stock count from a specific Restaurant
       produces:
       - application/json
@@ -19,7 +19,7 @@ paths:
   /api/reports/{drinks}:
     post:                 
       tags:               
-        - Post Drinks Report            
+        - Drinks            
       summary: Posts the drinks daily stock count from a specific Restaurant
       produces:
       - application/json
@@ -36,7 +36,7 @@ paths:
   /api/reports/{drinks}/{restaurant_id}:
     put:                 
       tags:               
-        - Update Drinks Report            
+        - Drinks           
       summary: Updates the drinks daily stock count from a specific Restaurant
       produces:
       - application/json
@@ -53,7 +53,7 @@ paths:
   /api/reports/{drinks}/{restaurantId}:
     delete:                 
       tags:               
-        - Delete Drinks Report            
+        - Drinks           
       summary: Deletes the drinks daily stock count from a specific Restaurant
       produces:
       - application/json

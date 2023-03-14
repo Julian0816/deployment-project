@@ -2,7 +2,7 @@ paths:
   /api/reports/keyItems:
     get:                 
       tags:               
-        - Get KeyItems Report            
+        - KeyItems            
       summary: Gets the keyItems daily stock count from a specific Restaurant
       produces:
       - application/json
@@ -19,7 +19,7 @@ paths:
   /api/reports/{keyItems}:
     post:                 
       tags:               
-        - Post KeyItems Report            
+        - KeyItems           
       summary: Posts the keyItems daily stock count from a specific Restaurant
       produces:
       - application/json
@@ -36,7 +36,7 @@ paths:
   /api/reports/{keyItems}/{restaurant_id}:
     put:                 
       tags:               
-        - Update KeyItems Report            
+        - KeyItems           
       summary: Updates the KeyItems daily stock count from a specific Restaurant
       produces:
       - application/json
@@ -53,7 +53,7 @@ paths:
   /api/reports/{keyItems}/{restaurantId}:
     delete:                 
       tags:               
-        - Delete KeyItems Report            
+        - KeyItems            
       summary: Deletes the KeyItems daily stock count from a specific Restaurant
       produces:
       - application/json
