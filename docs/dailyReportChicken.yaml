@@ -123,24 +123,64 @@ paths:
         description: Update Chicken Report
         required: false      
       responses:          
-        201:
+        200:
           description: An object with report details
-  /api/reports/{chicken}/{restaurantId}:
+  /api/reports/chicken/{restaurantId}:
     delete:                 
       tags:               
         - Chicken           
-      summary: Deletes the chicken daily stock count from a specific Restaurant
+      summary: Posts the chicken daily stock count from a specific Restaurant
+      requestBody:
+        description: chicken
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                responses:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      _id:
+                        type: string
+                        example: 640e5d7478b88f6300ed168f
+                      restaurant:
+                        type: string
+                        example: 640e59000b0d9114c77cceaa
+                      chickens:
+                        type: number
+                        example: 81
+                      chicken_fillets:
+                        type: number
+                        example: 12
+                      wings:
+                        type: number
+                        example: 34
+                      double_brest:
+                        type: number
+                        example: 7 
+                      chicken_thighs:
+                        type: number
+                        example: 14
+                      createdAt:
+                        type: string
+                        example: 2023-03-12T23:17:08.408Z
+                      updatedAt:
+                        type: string
+                        example: 2023-03-12T23:17:08.408Z
+                      __v:
+                        type: number
+                        example: 0
       produces:
-      - application/json
+      - application/json 
       parameters:         
-      - in: body          
-        name: sign up     
-        description: Delete stock
-        required: false   
-        schema:           
-          $ref: '#/definitions/deleteChickenReport' 
+      - name: restaurantId          
+        in: path     
+        description: Update Chicken Report
+        required: false      
       responses:          
-        201:
+        200:
           description: An object with report details
 definitions:        
   ChickenReport:
