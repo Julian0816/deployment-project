@@ -16,56 +16,198 @@ paths:
       responses:          
         200:
           description: An object with report details
-  /api/reports/{drinks}:
+  /api/reports/senddrinks:
     post:                 
       tags:               
-        - Drinks            
+        - Drinks           
       summary: Posts the drinks daily stock count from a specific Restaurant
+      requestBody:
+        description: drinks
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                responses:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      _id:
+                        type: string
+                        example: 640e5d7478b88f6300ed168f
+                      restaurant:
+                        type: string
+                        example: 640e59000b0d9114c77cceaa
+                      cara_viva_rose:
+                        type: number
+                        example: 81
+                      cara_viva_summer_fruit:
+                        type: number
+                        example: 12
+                      freedom_pils:
+                        type: number
+                        example: 34
+                      sagres:
+                        type: number
+                        example: 7 
+                      spier_merlot_250ml:
+                        type: number
+                        example: 14
+                      spier_rose_250ml:
+                        type: number
+                        example: 14
+                      spier_sauv_250ml:
+                        type: number
+                        example: 14
+                      spier_sig_chard_250ml:
+                        type: number
+                        example: 14
+                      createdAt:
+                        type: string
+                        example: 2023-03-12T23:17:08.408Z
+                      updatedAt:
+                        type: string
+                        example: 2023-03-12T23:17:08.408Z
+                      __v:
+                        type: number
+                        example: 0
       produces:
-      - application/json
-      parameters:         
-      - in: body          
-        name: sign up     
-        description: Post stock
-        required: false   
-        schema:           
-          $ref: '#/definitions/PostDrinksReport' 
+      - application/json 
       responses:          
         201:
           description: An object with report details
-  /api/reports/{drinks}/{restaurant_id}:
+  /api/reports/drinks/{restaurant_id}:
     put:                 
       tags:               
         - Drinks           
-      summary: Updates the drinks daily stock count from a specific Restaurant
+      summary: Posts the drinks daily stock count from a specific Restaurant
+      requestBody:
+        description: drinks
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                responses:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      _id:
+                        type: string
+                        example: 640e5d7478b88f6300ed168f
+                      restaurant:
+                        type: string
+                        example: 640e59000b0d9114c77cceaa
+                      cara_viva_rose:
+                        type: number
+                        example: 81
+                      cara_viva_summer_fruit:
+                        type: number
+                        example: 12
+                      freedom_pils:
+                        type: number
+                        example: 34
+                      sagres:
+                        type: number
+                        example: 7 
+                      spier_merlot_250ml:
+                        type: number
+                        example: 14
+                      spier_rose_250ml:
+                        type: number
+                        example: 14
+                      spier_sauv_250ml:
+                        type: number
+                        example: 14
+                      spier_sig_chard_250ml:
+                        type: number
+                        example: 14
+                      createdAt:
+                        type: string
+                        example: 2023-03-12T23:17:08.408Z
+                      updatedAt:
+                        type: string
+                        example: 2023-03-12T23:17:08.408Z
+                      __v:
+                        type: number
+                        example: 0
       produces:
       - application/json
       parameters:         
-      - in: body          
-        name: sign up     
-        description: Update stock
-        required: false   
-        schema:           
-          $ref: '#/definitions/PutDrinksReport' 
+      - name: restaurant_id          
+        in: path     
+        description: Update Drinks Report
+        required: false 
       responses:          
-        201:
+        200:
           description: An object with report details
-  /api/reports/{drinks}/{restaurantId}:
+  /api/reports/drinks/{restaurantId}:
     delete:                 
       tags:               
         - Drinks           
-      summary: Deletes the drinks daily stock count from a specific Restaurant
+      summary: Posts the drinks daily stock count from a specific Restaurant
+      requestBody:
+        description: drinks
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                responses:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      _id:
+                        type: string
+                        example: 640e5d7478b88f6300ed168f
+                      restaurant:
+                        type: string
+                        example: 640e59000b0d9114c77cceaa
+                      cara_viva_rose:
+                        type: number
+                        example: 81
+                      cara_viva_summer_fruit:
+                        type: number
+                        example: 12
+                      freedom_pils:
+                        type: number
+                        example: 34
+                      sagres:
+                        type: number
+                        example: 7 
+                      spier_merlot_250ml:
+                        type: number
+                        example: 14
+                      spier_rose_250ml:
+                        type: number
+                        example: 14
+                      spier_sauv_250ml:
+                        type: number
+                        example: 14
+                      spier_sig_chard_250ml:
+                        type: number
+                        example: 14
+                      createdAt:
+                        type: string
+                        example: 2023-03-12T23:17:08.408Z
+                      updatedAt:
+                        type: string
+                        example: 2023-03-12T23:17:08.408Z
+                      __v:
+                        type: number
+                        example: 0
       produces:
       - application/json
       parameters:         
-      - in: body          
-        name: sign up     
-        description: Delete stock
-        required: false   
-        schema:           
-          $ref: '#/definitions/deleteDrinksReport' 
+      - name: restaurantId          
+        in: path     
+        description: Update Drinks Report
+        required: false 
       responses:          
-        201:
+        200:
           description: An object with report details
 definitions:        
   DrinksReport:
