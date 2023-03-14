@@ -16,20 +16,55 @@ paths:
       responses:          
         200:
           description: An object with report details
-  /api/reports/{chicken}:
+  /api/reports/sendchicken:
     post:                 
       tags:               
         - Chicken           
       summary: Posts the chicken daily stock count from a specific Restaurant
+      requestBody:
+        description: chicken
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                responses:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      _id:
+                        type: string
+                        example: 640e5d7478b88f6300ed168f
+                      restaurant:
+                        type: string
+                        example: 640e59000b0d9114c77cceaa
+                      chickens:
+                        type: number
+                        example: 81
+                      chicken_fillets:
+                        type: number
+                        example: 12
+                      wings:
+                        type: number
+                        example: 34
+                      double_brest:
+                        type: number
+                        example: 7 
+                      chicken_thighs:
+                        type: number
+                        example: 14
+                      createdAt:
+                        type: string
+                        example: 2023-03-12T23:17:08.408Z
+                      updatedAt:
+                        type: string
+                        example: 2023-03-12T23:17:08.408Z
+                      __v:
+                        type: number
+                        example: 0
       produces:
-      - application/json
-      parameters:         
-      - in: body          
-        name: sign up     
-        description: Post stock
-        required: false   
-        schema:           
-          $ref: '#/definitions/PostChickenReport' 
+      - application/json 
       responses:          
         201:
           description: An object with report details
