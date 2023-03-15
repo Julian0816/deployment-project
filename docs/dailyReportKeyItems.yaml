@@ -136,7 +136,6 @@ paths:
       responses:          
         201:
           description: An object with report details
-  /api/reports/keyItems/{restaurantId}:
     delete:                 
       tags:               
         - KeyItems           
