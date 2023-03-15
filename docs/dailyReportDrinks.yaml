@@ -1,0 +1,390 @@
+paths:
+  /api/reports/drinks:
+    get:                 
+      tags:               
+        - Drinks           
+      summary: Gets the Drinks daily stock count from a specific Restaurant
+      produces:
+      - application/json
+      parameters:         
+      - in: body          
+        name: sign up     
+        description: Gets Stock
+        required: false   
+        schema:           
+          $ref: '#/definitions/DrinksReport' 
+      responses:          
+        200:
+          description: An object with report details
+    post:                 
+      tags:               
+        - Drinks           
+      summary: Posts/Creates the drinks daily stock count from a specific Restaurant
+      requestBody:
+        description: drinks
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                responses:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      _id:
+                        type: string
+                        example: 640e5d7478b88f6300ed168f
+                      restaurant:
+                        type: string
+                        example: 640e59000b0d9114c77cceaa
+                      cara_viva_rose:
+                        type: number
+                        example: 81
+                      cara_viva_summer_fruit:
+                        type: number
+                        example: 12
+                      freedom_pils:
+                        type: number
+                        example: 34
+                      sagres:
+                        type: number
+                        example: 7 
+                      spier_merlot_250ml:
+                        type: number
+                        example: 14
+                      spier_rose_250ml:
+                        type: number
+                        example: 14
+                      spier_sauv_250ml:
+                        type: number
+                        example: 14
+                      spier_sig_chard_250ml:
+                        type: number
+                        example: 14
+                      createdAt:
+                        type: string
+                        example: 2023-03-12T23:17:08.408Z
+                      updatedAt:
+                        type: string
+                        example: 2023-03-12T23:17:08.408Z
+                      __v:
+                        type: number
+                        example: 0
+      produces:
+      - application/json 
+      responses:          
+        201:
+          description: An object with report details
+  /api/reports/drinks/{restaurant_id}:
+    put:                 
+      tags:               
+        - Drinks           
+      summary: Posts the drinks daily stock count from a specific Restaurant
+      requestBody:
+        description: drinks
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                responses:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      _id:
+                        type: string
+                        example: 640e5d7478b88f6300ed168f
+                      restaurant:
+                        type: string
+                        example: 640e59000b0d9114c77cceaa
+                      cara_viva_rose:
+                        type: number
+                        example: 81
+                      cara_viva_summer_fruit:
+                        type: number
+                        example: 12
+                      freedom_pils:
+                        type: number
+                        example: 34
+                      sagres:
+                        type: number
+                        example: 7 
+                      spier_merlot_250ml:
+                        type: number
+                        example: 14
+                      spier_rose_250ml:
+                        type: number
+                        example: 14
+                      spier_sauv_250ml:
+                        type: number
+                        example: 14
+                      spier_sig_chard_250ml:
+                        type: number
+                        example: 14
+                      createdAt:
+                        type: string
+                        example: 2023-03-12T23:17:08.408Z
+                      updatedAt:
+                        type: string
+                        example: 2023-03-12T23:17:08.408Z
+                      __v:
+                        type: number
+                        example: 0
+      produces:
+      - application/json
+      parameters:         
+      - name: restaurant_id          
+        in: path     
+        description: Update Drinks Report
+        required: false 
+      responses:          
+        200:
+          description: An object with report details
+    delete:                 
+      tags:               
+        - Drinks           
+      summary: Posts the drinks daily stock count from a specific Restaurant
+      requestBody:
+        description: drinks
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                responses:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      _id:
+                        type: string
+                        example: 640e5d7478b88f6300ed168f
+                      restaurant:
+                        type: string
+                        example: 640e59000b0d9114c77cceaa
+                      cara_viva_rose:
+                        type: number
+                        example: 81
+                      cara_viva_summer_fruit:
+                        type: number
+                        example: 12
+                      freedom_pils:
+                        type: number
+                        example: 34
+                      sagres:
+                        type: number
+                        example: 7 
+                      spier_merlot_250ml:
+                        type: number
+                        example: 14
+                      spier_rose_250ml:
+                        type: number
+                        example: 14
+                      spier_sauv_250ml:
+                        type: number
+                        example: 14
+                      spier_sig_chard_250ml:
+                        type: number
+                        example: 14
+                      createdAt:
+                        type: string
+                        example: 2023-03-12T23:17:08.408Z
+                      updatedAt:
+                        type: string
+                        example: 2023-03-12T23:17:08.408Z
+                      __v:
+                        type: number
+                        example: 0
+      produces:
+      - application/json
+      parameters:         
+      - name: restaurantId          
+        in: path     
+        description: Update Drinks Report
+        required: false 
+      responses:          
+        200:
+          description: An object with report details
+definitions:        
+  DrinksReport:
+    type: object
+    properties:
+      ChickenReport:
+        type: object
+        properties:
+          _id:
+            type: string
+            example: 640e5d7478b88f6300ed168f
+          restaurant:
+            type: string
+            example: 640e59000b0d9114c77cceaa
+          cara_viva_rose:
+            type: number
+            example: 8
+          cara_viva_summer_fruit:
+            type: number
+            example: 18
+          freedom_pils:
+            type: number
+            example: 24
+          sagres:
+            type: number
+            example: 36
+          spier_merlot_250ml:
+            type: number
+            example: 12
+          spier_rose_250ml:
+            type: number
+            example: 18
+          spier_sauv_250ml:
+            type: number
+            example: 1
+          spier_sig_chard_250ml:
+            type: number
+            example: 14
+          createdAt:
+            type: string
+            example: 2023-03-12T23:17:08.408Z
+          updatedAt:
+            type: string
+            example: 2023-03-12T23:17:08.408Z
+          __v:
+            type: number
+            example: 0
+  PostDrinksReport:
+    type: object
+    properties:
+      ChickenReport:
+        type: object
+        properties:
+          _id:
+            type: string
+            example: 640e5d7478b88f6300ed168f
+          restaurant:
+            type: string
+            example: 640e59000b0d9114c77cceaa
+          cara_viva_rose:
+            type: number
+            example: 8
+          cara_viva_summer_fruit:
+            type: number
+            example: 18
+          freedom_pils:
+            type: number
+            example: 24
+          sagres:
+            type: number
+            example: 36
+          spier_merlot_250ml:
+            type: number
+            example: 12
+          spier_rose_250ml:
+            type: number
+            example: 18
+          spier_sauv_250ml:
+            type: number
+            example: 1
+          spier_sig_chard_250ml:
+            type: number
+            example: 14
+          createdAt:
+            type: string
+            example: 2023-03-12T23:17:08.408Z
+          updatedAt:
+            type: string
+            example: 2023-03-12T23:17:08.408Z
+          __v:
+            type: number
+            example: 0
+  PutDrinksReport:
+    type: object
+    properties:
+      ChickenReport:
+        type: object
+        properties:
+          _id:
+            type: string
+            example: 640e5d7478b88f6300ed168f
+          restaurant:
+            type: string
+            example: 640e59000b0d9114c77cceaa
+          cara_viva_rose:
+            type: number
+            example: 8
+          cara_viva_summer_fruit:
+            type: number
+            example: 18
+          freedom_pils:
+            type: number
+            example: 24
+          sagres:
+            type: number
+            example: 36
+          spier_merlot_250ml:
+            type: number
+            example: 12
+          spier_rose_250ml:
+            type: number
+            example: 18
+          spier_sauv_250ml:
+            type: number
+            example: 1
+          spier_sig_chard_250ml:
+            type: number
+            example: 14
+          createdAt:
+            type: string
+            example: 2023-03-12T23:17:08.408Z
+          updatedAt:
+            type: string
+            example: 2023-03-12T23:17:08.408Z
+          __v:
+            type: number
+            example: 0
+  deleteDrinksReport:
+    type: object
+    properties:
+      ChickenReport:
+        type: object
+        properties:
+          _id:
+            type: string
+            example: 640e5d7478b88f6300ed168f
+          restaurant:
+            type: string
+            example: 640e59000b0d9114c77cceaa
+          cara_viva_rose:
+            type: number
+            example: 8
+          cara_viva_summer_fruit:
+            type: number
+            example: 18
+          freedom_pils:
+            type: number
+            example: 24
+          sagres:
+            type: number
+            example: 36
+          spier_merlot_250ml:
+            type: number
+            example: 12
+          spier_rose_250ml:
+            type: number
+            example: 18
+          spier_sauv_250ml:
+            type: number
+            example: 1
+          spier_sig_chard_250ml:
+            type: number
+            example: 14
+          createdAt:
+            type: string
+            example: 2023-03-12T23:17:08.408Z
+          updatedAt:
+            type: string
+            example: 2023-03-12T23:17:08.408Z
+          __v:
+            type: number
+            example: 0     

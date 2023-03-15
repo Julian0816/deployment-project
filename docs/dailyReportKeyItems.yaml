@@ -1,0 +1,370 @@
+paths:
+  /api/reports/keyItems:
+    get:                 
+      tags:               
+        - KeyItems            
+      summary: Gets the keyItems daily stock count from a specific Restaurant
+      produces:
+      - application/json
+      parameters:         
+      - in: body          
+        name: sign up     
+        description: Gets Stock
+        required: false   
+        schema:           
+          $ref: '#/definitions/KeyItemsReport' 
+      responses:          
+        200:
+          description: An object with report details
+    post:                 
+      tags:               
+        - KeyItems           
+      summary: Posts/Creates the keyItems daily stock count from a specific Restaurant
+      requestBody:
+        description: keyItems
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                responses:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      _id:
+                        type: string
+                        example: 640e5d7478b88f6300ed168f
+                      restaurant:
+                        type: string
+                        example: 640e59000b0d9114c77cceaa
+                      sweet_potato_wedges:
+                        type: number
+                        example: 4
+                      long_stem_broccoli_in_kg:
+                        type: number
+                        example: 1
+                      coleslaw_in_kg:
+                        type: number
+                        example: 12
+                      corn_per_unit:
+                        type: number
+                        example: 36
+                      rice_in_kg:
+                        type: number
+                        example: 45
+                      mixed_olives_in_kg:
+                        type: number
+                        example: 7.5
+                      chips_in_kg:
+                        type: number
+                        example: 323
+                      createdAt:
+                        type: string
+                        example: 2023-03-12T23:17:08.408Z
+                      updatedAt:
+                        type: string
+                        example: 2023-03-12T23:17:08.408Z
+                      __v:
+                        type: number
+                        example: 0
+      produces:
+      - application/json 
+      responses:          
+        201:
+          description: An object with report details
+  /api/reports/keyItems/{restaurant_id}:
+    put:                 
+      tags:               
+        - KeyItems           
+      summary: Updates the keyItems daily stock count from a specific Restaurant
+      requestBody:
+        description: keyItems
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                responses:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      _id:
+                        type: string
+                        example: 640e5d7478b88f6300ed168f
+                      restaurant:
+                        type: string
+                        example: 640e59000b0d9114c77cceaa
+                      sweet_potato_wedges:
+                        type: number
+                        example: 4
+                      long_stem_broccoli_in_kg:
+                        type: number
+                        example: 1
+                      coleslaw_in_kg:
+                        type: number
+                        example: 12
+                      corn_per_unit:
+                        type: number
+                        example: 36
+                      rice_in_kg:
+                        type: number
+                        example: 45
+                      mixed_olives_in_kg:
+                        type: number
+                        example: 7.5
+                      chips_in_kg:
+                        type: number
+                        example: 323
+                      createdAt:
+                        type: string
+                        example: 2023-03-12T23:17:08.408Z
+                      updatedAt:
+                        type: string
+                        example: 2023-03-12T23:17:08.408Z
+                      __v:
+                        type: number
+                        example: 0
+      produces:
+      - application/json 
+      parameters:         
+      - name: restaurant_id          
+        in: path     
+        description: Update keyItems Report
+        required: false 
+      responses:          
+        201:
+          description: An object with report details
+    delete:                 
+      tags:               
+        - KeyItems           
+      summary: Deletes the keyItems daily stock count from a specific Restaurant
+      requestBody:
+        description: keyItems
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                responses:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      _id:
+                        type: string
+                        example: 640e5d7478b88f6300ed168f
+                      restaurant:
+                        type: string
+                        example: 640e59000b0d9114c77cceaa
+                      sweet_potato_wedges:
+                        type: number
+                        example: 4
+                      long_stem_broccoli_in_kg:
+                        type: number
+                        example: 1
+                      coleslaw_in_kg:
+                        type: number
+                        example: 12
+                      corn_per_unit:
+                        type: number
+                        example: 36
+                      rice_in_kg:
+                        type: number
+                        example: 45
+                      mixed_olives_in_kg:
+                        type: number
+                        example: 7.5
+                      chips_in_kg:
+                        type: number
+                        example: 323
+                      createdAt:
+                        type: string
+                        example: 2023-03-12T23:17:08.408Z
+                      updatedAt:
+                        type: string
+                        example: 2023-03-12T23:17:08.408Z
+                      __v:
+                        type: number
+                        example: 0
+      produces:
+      - application/json 
+      parameters:         
+      - name: restaurantId          
+        in: path     
+        description: Update keyItems Report
+        required: false 
+      responses:          
+        201:
+          description: An object with report details
+definitions:        
+  KeyItemsReport:
+    type: object
+    properties:
+      ChickenReport:
+        type: object
+        properties:
+          _id:
+            type: string
+            example: 640e5d7478b88f6300ed168f
+          restaurant:
+            type: string
+            example: 640e59000b0d9114c77cceaa
+          sweet_potato_wedges:
+            type: number
+            example: 4
+          long_stem_broccoli_in_kg:
+            type: number
+            example: 1
+          coleslaw_in_kg:
+            type: number
+            example: 89
+          corn_per_unit:
+            type: number
+            example: 5
+          rice_in_kg:
+            type: number
+            example: 4
+          mixed_olives_in_kg:
+            type: number
+            example: 1
+          chips_in_kg:
+            type: number
+            example: 24
+          createdAt:
+            type: string
+            example: 2023-03-12T23:17:08.408Z
+          updatedAt:
+            type: string
+            example: 2023-03-12T23:17:08.408Z
+          __v:
+            type: number
+            example: 0
+  PostKeyItemsReport:
+    type: object
+    properties:
+      ChickenReport:
+        type: object
+        properties:
+          _id:
+            type: string
+            example: 640e5d7478b88f6300ed168f
+          restaurant:
+            type: string
+            example: 640e59000b0d9114c77cceaa
+          sweet_potato_wedges:
+            type: number
+            example: 4
+          long_stem_broccoli_in_kg:
+            type: number
+            example: 1
+          coleslaw_in_kg:
+            type: number
+            example: 89
+          corn_per_unit:
+            type: number
+            example: 5
+          rice_in_kg:
+            type: number
+            example: 4
+          mixed_olives_in_kg:
+            type: number
+            example: 1
+          chips_in_kg:
+            type: number
+            example: 24
+          createdAt:
+            type: string
+            example: 2023-03-12T23:17:08.408Z
+          updatedAt:
+            type: string
+            example: 2023-03-12T23:17:08.408Z
+          __v:
+            type: number
+            example: 0
+PutKeyItemsReport:
+    type: object
+    properties:
+      ChickenReport:
+        type: object
+        properties:
+          _id:
+            type: string
+            example: 640e5d7478b88f6300ed168f
+          restaurant:
+            type: string
+            example: 640e59000b0d9114c77cceaa
+          sweet_potato_wedges:
+            type: number
+            example: 4
+          long_stem_broccoli_in_kg:
+            type: number
+            example: 1
+          coleslaw_in_kg:
+            type: number
+            example: 89
+          corn_per_unit:
+            type: number
+            example: 5
+          rice_in_kg:
+            type: number
+            example: 4
+          mixed_olives_in_kg:
+            type: number
+            example: 1
+          chips_in_kg:
+            type: number
+            example: 24
+          createdAt:
+            type: string
+            example: 2023-03-12T23:17:08.408Z
+          updatedAt:
+            type: string
+            example: 2023-03-12T23:17:08.408Z
+          __v:
+            type: number
+            example: 0
+deleteKeyItemsReport:
+    type: object
+    properties:
+      ChickenReport:
+        type: object
+        properties:
+          _id:
+            type: string
+            example: 640e5d7478b88f6300ed168f
+          restaurant:
+            type: string
+            example: 640e59000b0d9114c77cceaa
+          sweet_potato_wedges:
+            type: number
+            example: 4
+          long_stem_broccoli_in_kg:
+            type: number
+            example: 1
+          coleslaw_in_kg:
+            type: number
+            example: 89
+          corn_per_unit:
+            type: number
+            example: 5
+          rice_in_kg:
+            type: number
+            example: 4
+          mixed_olives_in_kg:
+            type: number
+            example: 1
+          chips_in_kg:
+            type: number
+            example: 24
+          createdAt:
+            type: string
+            example: 2023-03-12T23:17:08.408Z
+          updatedAt:
+            type: string
+            example: 2023-03-12T23:17:08.408Z
+          __v:
+            type: number
+            example: 0
+          
