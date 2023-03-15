@@ -10,7 +10,7 @@ const { protect } = require('../middleware/authMiddleware')
 
 
 router.get("/chicken", protect, getDailyChickenReports);
-router.post("/sendchicken", protect, createDailyChickenReport);
+router.post("/chicken", protect, createDailyChickenReport);
 router.put("/chicken/:id", protect, updateDailyChickenReport);
 router.delete("/chicken/:id", protect, deleteDailyChickenReport);
 

@@ -16,7 +16,6 @@ paths:
       responses:          
         200:
           description: An object with report details
-  /api/reports/sendchicken:
     post:                 
       tags:               
         - Chicken           

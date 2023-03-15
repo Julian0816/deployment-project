@@ -9,7 +9,7 @@ const {
 const { protect } = require("../middleware/authMiddleware");
 
 router.get("/drinks", protect, getDailyDrinksReports);
-router.post("/senddrinks", protect, createDailyDrinksReport);
+router.post("/drinks", protect, createDailyDrinksReport);
 router.put("/drinks/:id", protect, updateDailyDrinksReport);
 router.delete("/drinks/:id", protect, deleteDailyDrinksReport);
 
